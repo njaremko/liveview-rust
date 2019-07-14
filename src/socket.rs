@@ -11,7 +11,6 @@ pub struct Event {
     pub data: Option<String>,
 }
 
-/// Define http actor
 pub struct StateSocket<State: Template> {
     pub state: State,
     pub live_view: LiveView<State>,

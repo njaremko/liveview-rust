@@ -1,6 +1,6 @@
 use crate::socket::Event;
-use std::collections::HashMap;
 use crate::Result;
+use std::collections::HashMap;
 
 pub trait Template: Sized + 'static + Clone {
     fn render(&self) -> Result<String>;
@@ -16,15 +16,15 @@ pub struct LiveView<State: Template> {
 }
 
 impl<State: Template> LiveView<State> {
-    pub fn on_click(&mut self, event: &str, func: fn(&Event, &mut State) -> Option<String>) {
+    pub fn on_click(&mut self, event: &str, func: EventHandler<State>) {
         self.click.insert(event.into(), func);
     }
 
-    pub fn on_submit(&mut self, event: &str, func: fn(&Event, &mut State) -> Option<String>) {
+    pub fn on_submit(&mut self, event: &str, func: EventHandler<State>) {
         self.submit.insert(event.into(), func);
     }
 
-    pub fn on_input(&mut self, event: &str, func: fn(&Event, &mut State) -> Option<String>) {
+    pub fn on_input(&mut self, event: &str, func: EventHandler<State>) {
         self.input.insert(event.into(), func);
     }
 }
