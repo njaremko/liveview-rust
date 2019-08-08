@@ -1,6 +1,6 @@
 use crate::socket::Event;
 use crate::Result;
-use std::collections::HashMap;
+use hashbrown::HashMap;
 
 pub trait Template: Sized + 'static + Clone {
     fn render(&self) -> Result<String>;

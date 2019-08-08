@@ -1,6 +1,10 @@
 # liveview-rust
 PoC of LiveView in rust
 
+[![Version](https://img.shields.io/crates/v/live-view.svg)](https://crates.io/crates/live-view)
+[![Documentation](https://docs.rs/live-view/badge.svg)](https://docs.rs/live-view/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/njaremko/live-view/master/LICENSE)
+
 This was inspired by the [Phoenix Live View](https://github.com/phoenixframework/phoenix_live_view) project.
 
 We follow a similar model, with the only difference being that we send the full html on each render 
