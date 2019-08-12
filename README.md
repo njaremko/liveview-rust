@@ -1,5 +1,5 @@
 # liveview-rust
-PoC of LiveView in rust
+PoC of LiveView in rust - "Never write javascript again"
 
 [![Version](https://img.shields.io/crates/v/live-view.svg)](https://crates.io/crates/live-view)
 [![Documentation](https://docs.rs/live-view/badge.svg)](https://docs.rs/live-view/)
