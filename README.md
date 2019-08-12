@@ -7,6 +7,8 @@ PoC of LiveView in rust
 
 This was inspired by the [Phoenix Live View](https://github.com/phoenixframework/phoenix_live_view) project.
 
+An example of how to use this library can be found [here.](https://github.com/njaremko/liveview-rust-example)
+
 We follow a similar model, with the only difference being that we send the full html on each render 
 and let the client calculate the diff, instead of sending only diffs to client and letting them apply the change.
 
