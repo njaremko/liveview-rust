@@ -1,0 +1,29 @@
+{
+  "name": "liveview-rust",
+  "version": "1.0.0",
+  "description": "PoC of LiveView in rust - \"Never write javascript again\"",
+  "private": true,
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njaremko/liveview-rust.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/njaremko/liveview-rust/issues"
+  },
+  "homepage": "https://github.com/njaremko/liveview-rust#readme",
+  "dependencies": {
+    "jquery": "^3.5.0",
+    "morphdom": "^2.5.12",
+    "webpack": "^4.43.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.11"
+  }
+}
