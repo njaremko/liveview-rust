@@ -1,6 +1,6 @@
 [package]
 name = "live-view"
-version = "0.0.3"
+version = "0.0.4"
 authors = ["Nathan Jaremko <nathan@jaremko.ca>"]
 edition = "2018"
 description = "A Live View implementation for Actix Web"
@@ -8,11 +8,11 @@ license = "MIT"
 repository = "https://github.com/njaremko/liveview-rust"
 
 [dependencies]
-actix-web = "1.0"
-actix-web-actors = "1.0"
-actix = "0.8"
-failure = "0.1"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-askama = "0.8"
-hashbrown = { version = "0.5", features = ["serde"] }
+actix-web = "4.0.0-beta.4"
+actix-web-actors = "4.0.0-beta.3"
+actix = "^0.11"
+failure = "^0.1"
+serde = { version = "^1.0", features = ["derive"] }
+serde_json = "^1.0"
+askama = "^0.10"
+hashbrown = { version = "^0.11", features = ["serde"] }

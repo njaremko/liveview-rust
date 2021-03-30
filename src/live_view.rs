@@ -2,7 +2,7 @@ use crate::socket::Event;
 use crate::Result;
 use hashbrown::HashMap;
 
-pub trait Template: Sized + 'static + Clone {
+pub trait Template: Sized + 'static + Clone + Unpin {
     fn render(&self) -> Result<String>;
 }
 

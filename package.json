@@ -21,9 +21,9 @@
   "dependencies": {
     "jquery": "^3.5.0",
     "morphdom": "^2.5.12",
-    "webpack": "^4.43.0"
+    "webpack": "^5.28.0"
   },
   "devDependencies": {
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^4.6.0"
   }
 }

@@ -17,15 +17,15 @@ pub struct StateSocket<State: Template> {
 }
 
 impl<State: Template> Actor for StateSocket<State> {
-    type Context = ws::WebsocketContext<Self>;
+    type Context = WebsocketContext<Self>;
 }
 
 /// Handler for ws::Message message
-impl<State: Template> StreamHandler<ws::Message, ws::ProtocolError> for StateSocket<State> {
-    fn handle(&mut self, msg: ws::Message, ctx: &mut Self::Context) {
+impl<State: Template> StreamHandler<Result<ws::Message, ws::ProtocolError>> for StateSocket<State> {
+    fn handle(&mut self, msg: Result<ws::Message, ws::ProtocolError>, ctx: &mut Self::Context) {
         match msg {
-            ws::Message::Ping(msg) => ctx.pong(&msg),
-            ws::Message::Text(text) => {
+            Ok(ws::Message::Ping(msg)) => ctx.pong(&msg),
+            Ok(ws::Message::Text(text)) => {
                 let parsed: Event = serde_json::from_str(&text).unwrap();
                 match parsed.kind.as_ref() {
                     "click" => click_handler(self, ctx, parsed),
@@ -34,8 +34,8 @@ impl<State: Template> StreamHandler<ws::Message, ws::ProtocolError> for StateSoc
                     _ => {}
                 }
             }
-            ws::Message::Binary(bin) => dbg!(ctx.binary(bin)),
-            ws::Message::Close(_) => {
+            Ok(ws::Message::Binary(bin)) => dbg!(ctx.binary(bin)),
+            Ok(ws::Message::Close(_)) => {
                 ctx.stop();
             }
             _ => (),
