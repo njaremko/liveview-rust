@@ -1,6 +1,4 @@
 #[macro_use]
-extern crate failure;
-#[macro_use]
 extern crate serde;
 
 mod live_view;
@@ -9,7 +7,7 @@ mod socket;
 pub use live_view::*;
 pub use socket::*;
 
-pub type Result<T> = std::result::Result<T, failure::Error>;
+pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 #[derive(askama::Template, Clone, Debug, Default)]
 #[template(path = "base.html", escape = "none")]
