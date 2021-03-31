@@ -57,6 +57,9 @@ function send_event(kind, event, data = null) {
 const CLICK_EVENT = 'click';
 const SUBMIT_EVENT = 'submit';
 const INPUT_EVENT = 'input';
+const KEYDOWN_EVENT = 'keydown';
+const MOUSEOVER_EVENT = 'mouseover';
+const MOUSEOUT_EVENT = 'mouseout';
 
 function attach() {
     let clickElems = document.querySelectorAll('[rust-click]');
@@ -78,12 +81,39 @@ function attach() {
         });
     }
 
+    let inputElems = document.querySelectorAll('[rust-input]');
+    for (let i = 0; i < inputElems.length; i++) {
+        inputElems[i].addEventListener(INPUT_EVENT, function (e) {
+            let event = inputElems[i].getAttribute('rust-input');
+            let val = $(this).val();
+            send_event(INPUT_EVENT, event, val);
+        });
+    }
+
     let keydownElems = document.querySelectorAll('[rust-keydown]');
     for (let i = 0; i < keydownElems.length; i++) {
         keydownElems[i].addEventListener(INPUT_EVENT, function (e) {
             let event = keydownElems[i].getAttribute('rust-keydown');
             let val = $(this).val();
-            send_event(INPUT_EVENT, event, val);
+            send_event(KEYDOWN_EVENT, event, val);
+        });
+    }
+
+    let mouseoverElems = document.querySelectorAll('[rust-mouseover]');
+    for (let i = 0; i < mouseoverElems.length; i++) {
+        mouseoverElems[i].addEventListener(INPUT_EVENT, function (e) {
+            let event = mouseoverElems[i].getAttribute('rust-mouseover');
+            let val = $(this).val();
+            send_event(MOUSEOVER_EVENT, event, val);
+        });
+    }
+
+    let mouseoutElems = document.querySelectorAll('[rust-mouseout]');
+    for (let i = 0; i < mouseoutElems.length; i++) {
+        mouseoutElems[i].addEventListener(INPUT_EVENT, function (e) {
+            let event = mouseoutElems[i].getAttribute('rust-mouseout');
+            let val = $(this).val();
+            send_event(MOUSEOUT_EVENT, event, val);
         });
     }
 }

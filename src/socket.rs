@@ -29,7 +29,10 @@ impl<State: Template> StreamHandler<Result<ws::Message, ws::ProtocolError>> for 
                 let parsed: Event = serde_json::from_str(&text).unwrap();
                 match parsed.kind.as_ref() {
                     "click" => click_handler(self, ctx, parsed),
+                    "keydown" => keydown_handler(self, ctx, parsed),
                     "input" => input_handler(self, ctx, parsed),
+                    "mouseover" => mouseover_handler(self, ctx, parsed),
+                    "mouseout" => mouseout_handler(self, ctx, parsed),
                     "submit" => submit_handler(self, ctx, parsed),
                     _ => {}
                 }
@@ -73,6 +76,42 @@ fn input_handler<State: Template>(
     event: Event,
 ) {
     if let Some(f) = socket.live_view.input.get_mut(&event.event) {
+        if let Some(rendered) = f(&event, &mut socket.state) {
+            ctx.text(rendered);
+        }
+    }
+}
+
+fn mouseover_handler<State: Template>(
+    socket: &mut StateSocket<State>,
+    ctx: &mut WebsocketContext<StateSocket<State>>,
+    event: Event,
+) {
+    if let Some(f) = socket.live_view.mouseover.get_mut(&event.event) {
+        if let Some(rendered) = f(&event, &mut socket.state) {
+            ctx.text(rendered);
+        }
+    }
+}
+
+fn mouseout_handler<State: Template>(
+    socket: &mut StateSocket<State>,
+    ctx: &mut WebsocketContext<StateSocket<State>>,
+    event: Event,
+) {
+    if let Some(f) = socket.live_view.mouseout.get_mut(&event.event) {
+        if let Some(rendered) = f(&event, &mut socket.state) {
+            ctx.text(rendered);
+        }
+    }
+}
+
+fn keydown_handler<State: Template>(
+    socket: &mut StateSocket<State>,
+    ctx: &mut WebsocketContext<StateSocket<State>>,
+    event: Event,
+) {
+    if let Some(f) = socket.live_view.keydown.get_mut(&event.event) {
         if let Some(rendered) = f(&event, &mut socket.state) {
             ctx.text(rendered);
         }
