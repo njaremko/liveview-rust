@@ -1,6 +1,6 @@
 [package]
 name = "live-view"
-version = "0.0.7"
+version = "0.0.8"
 authors = ["Nathan Jaremko <nathan@jaremko.ca>"]
 edition = "2018"
 description = "A Live View implementation for Actix Web"
