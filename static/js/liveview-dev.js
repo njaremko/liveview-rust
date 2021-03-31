@@ -92,7 +92,7 @@ function attach() {
 
     let keydownElems = document.querySelectorAll('[rust-keydown]');
     for (let i = 0; i < keydownElems.length; i++) {
-        keydownElems[i].addEventListener(INPUT_EVENT, function (e) {
+        keydownElems[i].addEventListener(KEYDOWN_EVENT, function (e) {
             let event = keydownElems[i].getAttribute('rust-keydown');
             let val = $(this).val();
             send_event(KEYDOWN_EVENT, event, val);
@@ -101,7 +101,7 @@ function attach() {
 
     let mouseoverElems = document.querySelectorAll('[rust-mouseover]');
     for (let i = 0; i < mouseoverElems.length; i++) {
-        mouseoverElems[i].addEventListener(INPUT_EVENT, function (e) {
+        mouseoverElems[i].addEventListener(MOUSEOVER_EVENT, function (e) {
             let event = mouseoverElems[i].getAttribute('rust-mouseover');
             let val = $(this).val();
             send_event(MOUSEOVER_EVENT, event, val);
@@ -110,7 +110,7 @@ function attach() {
 
     let mouseoutElems = document.querySelectorAll('[rust-mouseout]');
     for (let i = 0; i < mouseoutElems.length; i++) {
-        mouseoutElems[i].addEventListener(INPUT_EVENT, function (e) {
+        mouseoutElems[i].addEventListener(MOUSEOUT_EVENT, function (e) {
             let event = mouseoutElems[i].getAttribute('rust-mouseout');
             let val = $(this).val();
             send_event(MOUSEOUT_EVENT, event, val);
