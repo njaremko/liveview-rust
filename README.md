@@ -13,7 +13,7 @@ We follow a similar model, with the only difference being that we send the full 
 and let the client calculate the diff, instead of sending only diffs to client and letting them apply the change.
 
 What works?
-  - We click, text input, and submit events are send to server and template is re-rendered and sent to client, then morphdom
+  - Click, text input, and submit events are sent to server and the template is re-rendered and sent to client, then morphdom
   applies the change to the dom.
   - Build on Actix-Web at the moment, potentially working with Rocket at some point as well.
   
